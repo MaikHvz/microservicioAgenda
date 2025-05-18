@@ -44,4 +44,10 @@ public class Agenda {
     @NotBlank(message = "El correo es obligatorio")
     @Email(message = "El correo no tiene un formato válido")
     private String emailCliente;
+
+    @Builder.Default
+    @Column(name = "estado_agenda", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private AgendaEstado estado = AgendaEstado.AGENDADA;
+
 }
