@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 @Entity
 @Data
-@Table(name="agenda")
+@Table(name = "agenda")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -19,24 +19,24 @@ public class Agenda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="nombre_cliente",nullable = false)
+    @Column(name = "nombre_cliente", nullable = false)
     @NotBlank(message = "El nombre del cliente es obligatorio")
     private String nombreCliente;
 
-    @Column(name="rut_cliente",length = 10,nullable=false)
+    @Column(name = "rut_cliente", length = 10, nullable = false)
     @NotBlank(message = "El RUT del cliente es obligatorio")
     @Pattern(regexp = "^[0-9]+-[0-9kK]{1}$", message = "El RUT debe tener el formato correcto, por ejemplo: 12345678-9")
     private String rutCliente;
 
-    @Column(name="id_servicio",nullable = false)
+    @Column(name = "id_servicio", nullable = false)
     @NotNull(message = "El id del servicio es obligatorio")
     private Integer idServicio;
 
-    @Column(name="fecha",nullable = false)
+    @Column(name = "fecha", nullable = false)
     @NotNull(message = "La fecha es obligatoria")
     private LocalDate fecha;
 
-    @Column(name="hora",nullable = false)
+    @Column(name = "hora", nullable = false)
     @NotNull(message = "La hora es obligatoria")
     private LocalTime hora;
 
@@ -45,9 +45,7 @@ public class Agenda {
     @Email(message = "El correo no tiene un formato válido")
     private String emailCliente;
 
-    @Builder.Default
-    @Column(name = "estado_agenda", nullable = false)
     @Enumerated(EnumType.STRING)
-    private AgendaEstado estado = AgendaEstado.AGENDADA;
-
+    @Column(name = "estado", nullable = false)
+    private AgendaEstado estadoAgenda = AgendaEstado.AGENDADA;
 }

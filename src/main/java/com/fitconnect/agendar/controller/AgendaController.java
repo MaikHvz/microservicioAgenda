@@ -18,7 +18,6 @@ public class AgendaController {
         this.agendaService = agendaService;
     }
 
-    // Crear una nueva agenda
     @PostMapping
     public ResponseEntity<?> crearAgenda(@RequestBody Agenda agenda) {
         try {
@@ -29,14 +28,12 @@ public class AgendaController {
         }
     }
 
-    // Listar todas las agendas
     @GetMapping
     public ResponseEntity<List<Agenda>> listarTodas() {
         List<Agenda> agendas = agendaService.listarTodas();
         return ResponseEntity.ok(agendas);
     }
 
-    // Buscar agenda por id
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Integer id) {
         Optional<Agenda> agenda = agendaService.buscarPorId(id);
@@ -44,7 +41,6 @@ public class AgendaController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Actualizar agenda por id
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizarAgenda(@PathVariable Integer id, @RequestBody Agenda agenda) {
         try {
@@ -55,7 +51,6 @@ public class AgendaController {
         }
     }
 
-    // Eliminar agenda por id
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarAgenda(@PathVariable Integer id) {
         try {
